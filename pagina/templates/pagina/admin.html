@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro's</title>
+</head>
+<body>
+    <h1>Lista de Productos</h1>
+     {% for producto in productos %}
+
+        {{producto.id_producto}},  {{producto.nombre_producto}},  {{producto.precio}}, 
+        {{producto.activo}},  {{producto.id_categoria.categoria}} <br>
+
+     {% endfor%}
+
+     <div class="container">
+        <ul>
+            {% for producto in productos %}
+                    <h2>{{ producto }}</h2>
+                    <h4>ID: {{ productos.id_producto }} </h4>
+                    <h4>Precio: ${{ producto.precio }} 🛫 </h4>
+                    {% if producto.foto %}
+                        <img src="{{ producto.foto.url }}" alt="{{ producto }}">
+                    {% endif %}
+                    <br>
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>
+</html>

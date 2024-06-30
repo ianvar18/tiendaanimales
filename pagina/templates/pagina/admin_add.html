@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro's</title>
+</head>
+<body>
+
+    <div style="text-align: center;">
+        <h2>Formulario Productos</h2><br>
+        <form action="{% url 'productosAdd' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <pre>ID:               <input type="text" name="id_producto"></pre>
+            <pre>Nombre:           <input type="text" name="nombre_producto"></pre>
+            <pre>Precio:           <input type="text" name="precio"></pre>
+            <pre>Categoría:        <select name="categoria">
+                {% for categoria in categorias %}
+                    <option value="{{ categoria.id_categoria }}">{{ categoria.categoria }}</option>
+                {% endfor %}
+            </select></pre>
+            <pre>Imagen:      <input type="file" name="foto"></pre>
+
+            <input type="submit" name="opcion" value="Agregar Producto">
+        </form> <br><br>
+
+        <a href="{% url 'crud' %}"> Volver </a>
+        <br>
+        <div id="idMensajes">
+            {% if mensaje %}
+            {{ mensaje }}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
